@@ -9,4 +9,29 @@
 // This program only needs to handle arguments that satisfy
 // R0 >= 0, R1 >= 0, and R0*R1 < 32768.
 
-// Put your code here.
+@I
+M = 0
+@R2
+M = 0
+(LOOP)
+// IF R1 - I = 0 GOTO END
+@R1
+D = M
+@I
+D = D - M
+@END
+D;JEQ
+// OQUE VAI SER RODADO VARIAS VEZES
+@R0
+D = M
+@R2
+M = M + D
+@I
+M = M + 1
+// INCREMENDO DO I (NO CASO DECRESEMENTO) I = I - 1
+@LOOP
+0;JMP
+//FORA DO LOOP (FIM DO PROGRAMA)
+(END)
+@END
+0;JMP
